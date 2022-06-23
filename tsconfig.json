@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "lib": [
+      "es2019",
+      "ES2020.String"
+    ],
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noLib": false,
+    "strict": true,
+    "target": "es2019",
+    "outDir": "./dist",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "useUnknownInCatchVariables": false
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./**/*"
+  ]
+}
