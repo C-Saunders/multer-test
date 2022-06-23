@@ -28,3 +28,9 @@ server.post(
     return res.send('OK')
   }
 )
+
+if (require.main == module) {
+  const port = 5000
+  const host = 'localhost'
+  server.listen(port, 'localhost', () => console.info(`Listening on http://${host}:${port}/`))
+}

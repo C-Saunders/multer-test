@@ -2,9 +2,14 @@
   "name": "multer-test",
   "version": "1.0.0",
   "description": "AsyncLocalStorage + Multer Test",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C-Saunders/multer-test"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "ts-node index.ts"
   },
   "author": "Charlie Saunders <charlieasaunders@gmail.com>",
   "license": "MIT",
