@@ -1,4 +1,5 @@
 import { AsyncLocalStorage } from 'async_hooks'
+import busboy from 'busboy'
 import express from 'express'
 import multer from 'multer'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,6 +12,25 @@ export const server = express()
 server.use((req, _res, next) => {
   executionContext.run({ request_id: req.get('X-Request-ID') ?? uuidv4() }, () => next())
 })
+
+server.post(
+  '/with-busboy',
+  (req, res, _next) => {
+    // example adapted from busboy README
+    const bb = busboy({ headers: req.headers })
+    bb.on('field', (name, val, _info) => {
+      console.log(`Field [${name}]: value: %j`, val)
+    })
+    bb.on('close', () => {
+      console.log('Done parsing form!')
+      res.end()
+    })
+    req.pipe(bb)
+
+    console.log(executionContext.getStore())
+    return res.send('OK')
+  }
+)
 
 server.post(
   '/with-multer',
